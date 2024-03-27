@@ -9,6 +9,7 @@ const daysData = document.querySelector('[data-days]');
 const hoursData = document.querySelector('[data-hours]');
 const minutesData = document.querySelector('[data-minutes]');
 const secondsData = document.querySelector('[data-seconds]');
+const timer = document.querySelector('.timer');
 
 let userSelectedDate;
 
