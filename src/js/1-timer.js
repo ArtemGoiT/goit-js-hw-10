@@ -9,7 +9,6 @@ const daysData = document.querySelector('[data-days]');
 const hoursData = document.querySelector('[data-hours]');
 const minutesData = document.querySelector('[data-minutes]');
 const secondsData = document.querySelector('[data-seconds]');
-const timer = document.querySelector('.timer');
 
 let userSelectedDate;
 
@@ -32,10 +31,10 @@ const options = {
   },
 };
 
-let InterVal;
+let conInterval;
 
 function startTimer() {
-  InterVal = setVal(updateTimer, 1000, userSelectedDate);
+  conInterval = setInterval(updateTimer, 1000, userSelectedDate);
   inputData.disabled = true;
 }
 
@@ -47,8 +46,8 @@ function updateTimer(endDate) {
   if (!isNaN(days) && !isNaN(hours) && !isNaN(minutes) && !isNaN(seconds)) {
     daysData.textContent = addLeadingZero(days);
     hoursData.textContent = addLeadingZero(hours);
-    minutes.textContent = addLeadingZero(minutes);
-    seconds.textContent = addLeadingZero(seconds);
+    minutesData.textContent = addLeadingZero(minutes);
+    secondsData.textContent = addLeadingZero(seconds);
   }
 
   if (remainingTime <= 0) {
@@ -72,7 +71,7 @@ function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
 
-function convertMs(Ms) {
+function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
@@ -81,7 +80,7 @@ function convertMs(Ms) {
   const days = Math.floor(ms / day);
   const hours = Math.floor((ms % day) / hour);
   const minutes = Math.floor(((ms % day) % hour) / minute);
-  const seconds = Math.floor((((ms % day) % hour) % minute) % second);
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
   return { days, hours, minutes, seconds };
 }
 
