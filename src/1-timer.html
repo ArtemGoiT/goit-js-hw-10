@@ -3,12 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="stylesheet" href="./css/timer.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tim</title>
   </head>
   <body>
-    <a href="./index.html">Go to home</a>
-    <input type="text" id="datetime-picker" />
+    <p>
+      <a href="./index.html">Go to home</a>
+    </p>
+    <input
+      type="text"
+      id="datetime-picker"
+      class="flatpickr-input active"
+      readonly="readonly"
+    />
     <button type="button" data-start>Start</button>
 
     <div class="timer">
