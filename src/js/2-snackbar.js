@@ -1,11 +1,11 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const from = document.querySelector('.from');
+const form = document.querySelector('.form');
 
 function createPromise(event) {
   event.preventDefault();
-  const delay = from.delay.value;
+  const delay = form.delay.value;
   const state = form.state.value;
 
   const promise = new Promise((resolve, reject) => {
