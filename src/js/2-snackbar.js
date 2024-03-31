@@ -5,15 +5,23 @@ const form = document.querySelector('.form');
 
 function createPromise(event) {
   event.preventDefault();
-  const delay = form.delay.value;
+
+  // Зміни назв змінних для кращої зрозумілості коду
+  const delayInput = form.delay.value;
   const state = form.state.value;
 
+  // Конвертувати значення затримки в число
+  const delay = Number(delayInput);
+
+  // Використання одного setTimeout з умовою для resolve або reject
   const promise = new Promise((resolve, reject) => {
-    if (state === 'fulfilled') {
-      setTimeout(() => resolve(delay), delay);
-    } else if (state === 'rejected') {
-      setTimeout(() => reject(delay), delay);
-    }
+    setTimeout(() => {
+      if (state === 'fulfilled') {
+        resolve(delay);
+      } else if (state === 'rejected') {
+        reject(delay);
+      }
+    }, delay);
   });
 
   promise
@@ -23,7 +31,6 @@ function createPromise(event) {
         position: 'bottomCenter',
       });
     })
-
     .catch(delay => {
       iziToast.error({
         message: `❌ Rejected promise in ${delay}ms`,
